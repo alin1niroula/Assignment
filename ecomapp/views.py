@@ -537,15 +537,3 @@ class AdminProductCreateView(AdminRequiredMixin, CreateView):
         for i in images:
             ProductImage.objects.create(product=p, image=i)
         return super().form_valid(form)
-
-
-#...........................API................
-from django.urls import path, include
-from django.contrib.auth.models import User
-from rest_framework import routers, serializers, viewsets
-from .serializer import *
-
-# ViewSets define the view behavior.
-class ProductViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
